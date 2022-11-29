@@ -1,0 +1,32 @@
+.navigation{
+    height: 100%;
+    width: 18%;
+    position: relative;
+}
+
+.logo {
+    padding-bottom: 5%;
+}
+
+.navigator p {
+    padding-top: 3%;
+    font-size: 20px;
+    line-height: 32px;
+    opacity: 0.4;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.profile {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.profile img {
+    height: 100%;
+    width: 100%;
+}

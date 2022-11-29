@@ -1,0 +1,90 @@
+.list-view {
+    height: 100%;
+    width: 32%;
+}
+
+.list-view .para {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    padding-bottom: 2%;
+}
+
+.search-box {
+    padding-top: 2%;
+    padding: 3%;
+    position: relative;
+}
+
+.search {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border: none;
+    height: 48px;
+    width: 100%;
+    color: #FFFFFF;
+    opacity: 0.6;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.magnify {
+    position: absolute;
+    top: 37%;
+    right: 8%;
+    color: #E5E5E5!important;
+    cursor: pointer;
+}
+
+.list-elements{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    padding: 3%;
+    border-radius: 8px;
+}
+
+.list-wrapper {
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.list-image {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 5%;
+}
+
+.list-image img {
+    height: 100%;
+    width: 100%;
+}
+
+.list-data .song{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.list-data .artist {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    opacity: 0.6;
+}
+
+.duration p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: right;
+    color: #FFFFFF;
+    opacity: 0.6;
+}
