@@ -30,3 +30,7 @@
     height: 100%;
     width: 100%;
 }
+
+.active-playlist {
+    opacity: 1!important;
+}

@@ -7,6 +7,7 @@ import { DataService } from "../Services/DataService";
 const MusicPlayer = () => {
   DataService.getPlayList();
   DataService.getSongsList(1);
+
   return (
     <div className="wraper">
       <Navigation />
