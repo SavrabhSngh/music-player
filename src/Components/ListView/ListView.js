@@ -21,7 +21,8 @@ const ListView = (props) => {
           return (
             <ListElement
               key={index}
-              image={obj.photo}
+              _id={obj._id}
+              photo={obj.photo}
               title={obj.title}
               artist={obj.artist}
               duration={obj.duration}

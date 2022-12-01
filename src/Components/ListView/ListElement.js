@@ -19,7 +19,7 @@ const ListElement = (props) => {
     <div className="list-elements" onClick={handleClick}>
       <div className="list-wrapper">
         <div className="list-image">
-          <img src={props.image} alt=""></img>
+          <img src={props.photo} alt=""></img>
         </div>
         <div className="list-data">
           <p className="song">{props.title}</p>

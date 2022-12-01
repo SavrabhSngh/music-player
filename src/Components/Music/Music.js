@@ -44,6 +44,23 @@ const Music = (props) => {
     setPlay(!play);
   };
 
+  const handlePrevNext = (param) => {
+    const result = props.SongDetails.filter(
+      (elem) => elem._id === songData._id
+    );
+    var index = props.SongDetails.indexOf(result[0]);
+    if (param) {
+      index += 1;
+    } else {
+      index -= 1;
+    }
+    if (index >= 0 && index <= props.SongDetails.length)
+      DataService.ServiceInst?.next({
+        msgType: "Song",
+        payLoad: props.SongDetails[index],
+      });
+  };
+
   return (
     <div className="dflex music-wrapper">
       {songData ? (
@@ -54,17 +71,21 @@ const Music = (props) => {
           </div>
 
           <div className="song-image">
-            <img src={songData.image} alt="" />
+            <img src={songData.photo} alt="" />
           </div>
 
           <div className="dflex controls">
             <div className="svg">{GetSvg("eclipse")}</div>
             <div className="dflex play">
-              <div className="svg">{GetSvg("previous")}</div>
+              <div className="svg" onClick={() => handlePrevNext(0)}>
+                {GetSvg("previous")}
+              </div>
               <div className="svg" onClick={handlePlayPause}>
                 {play ? GetSvg("play") : GetSvg("pause")}
               </div>
-              <div className="svg">{GetSvg("next")}</div>
+              <div className="svg" onClick={() => handlePrevNext(1)}>
+                {GetSvg("next")}
+              </div>
             </div>
             <div className="svg">{GetSvg("mic")}</div>
           </div>
