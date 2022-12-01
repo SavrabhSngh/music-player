@@ -25,6 +25,7 @@ const ListView = (props) => {
               title={obj.title}
               artist={obj.artist}
               duration={obj.duration}
+              url={obj.url}
             />
           );
         })}

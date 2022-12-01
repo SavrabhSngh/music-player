@@ -10,7 +10,7 @@ export class DataService {
   }
 
   static ServiceInst = new BehaviorSubject({
-    msgType: "Dashboard",
+    msgType: "Song",
     payLoad: "",
   });
 

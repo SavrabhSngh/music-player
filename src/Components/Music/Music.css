@@ -1,0 +1,46 @@
+.music-wrapper {
+    width: 50%;
+}
+
+.player {
+    max-width: 480px;
+}
+
+.header {
+    margin-bottom: 6%;
+}
+
+.header .title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    margin-bottom: 3%;
+}
+
+.header .artist {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    opacity: 0.6;
+}
+
+.song-image img {
+    width: 480px;
+    height: auto;
+    max-height: 480px;
+}
+
+.controls {
+    justify-content: space-between;
+    margin-top: 6%;
+}
+
+.play {
+    width: 40%;
+    justify-content: space-between;
+}
+
+.svg {
+    border-radius: 50%;
+    cursor: pointer;
+}
