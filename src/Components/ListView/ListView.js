@@ -1,9 +1,10 @@
-import { FOR_YOU, ListData } from "../../Services/Constants";
+import { connect } from "react-redux";
+import { FOR_YOU } from "../../Services/Constants";
 import GetSvg from "../Common/GetSvg";
 import ListElement from "./ListElement";
 import "./ListView.css";
 
-const ListView = () => {
+const ListView = (props) => {
   return (
     <div className="list-view">
       <p className="para">{FOR_YOU}</p>
@@ -16,12 +17,12 @@ const ListView = () => {
         <div className="magnify">{GetSvg("magnify")}</div>
       </div>
       <div className="list-data">
-        {ListData.map((obj, index) => {
+        {props.SongsData.map((obj, index) => {
           return (
             <ListElement
               key={index}
-              image={obj.image}
-              song={obj.song}
+              image={obj.photo}
+              title={obj.title}
               artist={obj.artist}
               duration={obj.duration}
             />
@@ -32,4 +33,10 @@ const ListView = () => {
   );
 };
 
-export default ListView;
+const mapStateToProps = (state) => {
+  return {
+    SongsData: state.SongsData,
+  };
+};
+
+export default connect(mapStateToProps, {})(ListView);
