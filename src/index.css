@@ -26,11 +26,10 @@ body {
 
 ::-webkit-scrollbar-track {
     background: rgba(143, 155, 179, 0.5);
-    border-radius: 100px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ff014f;
+    background: rgba(51, 66, 94, 0.6);
 }
 
 ::-webkit-scrollbar-thumb:hover {

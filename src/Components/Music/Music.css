@@ -44,3 +44,26 @@
     border-radius: 50%;
     cursor: pointer;
 }
+
+.linear-progress {
+    position: relative;
+}
+
+.progress {
+    width: 100%;
+    background: #FFFFFF;
+    opacity: 0.2;
+    height: 6px;
+    border-radius: 16px;
+}
+
+.bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FFFFFF;
+    height: 6px;
+    width: 0;
+    opacity: 1;
+    border-radius: 16px;
+}

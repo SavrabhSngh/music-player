@@ -7,6 +7,7 @@ import "./Music.css";
 const Music = (props) => {
   const [songData, setSongData] = useState(props.SongDetails[0]);
   const [play, setPlay] = useState(false);
+  const progress = useRef();
   const ref = useRef();
 
   useEffect(() => {
@@ -17,6 +18,10 @@ const Music = (props) => {
             if (ref.current) {
               ref.current.pause();
               ref.current = null;
+            }
+            if (progress.current) {
+              clearInterval(progress.current);
+              progress.current = null;
             }
             if (data.payLoad && data.payLoad.title) {
               setSongData(data.payLoad);
@@ -35,11 +40,36 @@ const Music = (props) => {
     );
   }, []);
 
+  useEffect(() => {
+    clearInterval(progress.current);
+    progress.current = null;
+    const bar = document.getElementsByClassName("bar")[0];
+    if (bar && bar.style) {
+      bar.style.width = "0px";
+    }
+    animation();
+  }, [songData]);
+
+  const animation = () => {
+    const progressElem = document.getElementsByClassName("progress")[0];
+    const bar = document.getElementsByClassName("bar")[0];
+    if (progressElem && progressElem.style) {
+      var width = bar.getBoundingClientRect().width;
+      progress.current = setInterval(() => {
+        width += progressElem.getBoundingClientRect().width / songData.duration;
+        bar.style.width = `${width}px`;
+      }, 1000);
+    }
+  };
+
   const handlePlayPause = () => {
     if (play && ref.current) {
       ref.current.pause();
+      clearInterval(progress.current);
+      progress.current = null;
     } else {
       ref.current.play();
+      animation();
     }
     setPlay(!play);
   };
@@ -54,11 +84,15 @@ const Music = (props) => {
     } else {
       index -= 1;
     }
-    if (index >= 0 && index <= props.SongDetails.length)
+    if (index >= 0 && index < props.SongDetails.length)
       DataService.ServiceInst?.next({
         msgType: "Song",
         payLoad: props.SongDetails[index],
       });
+    else {
+      // eslint-disable-next-line no-console
+      console.log(index, props.SongDetails.length);
+    }
   };
 
   return (
@@ -72,6 +106,10 @@ const Music = (props) => {
 
           <div className="song-image">
             <img src={songData.photo} alt="" />
+            <div className="linear-progress">
+              <div className="progress"></div>
+              <div className="bar"></div>
+            </div>
           </div>
 
           <div className="dflex controls">
