@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { DataService } from "../../Services/DataService";
 import GetSvg from "../Common/GetSvg";
+import { changeActiveElem } from "../../Services/Helper";
 import "./Music.css";
 
 const Music = (props) => {
@@ -84,12 +85,13 @@ const Music = (props) => {
     } else {
       index -= 1;
     }
-    if (index >= 0 && index < props.SongDetails.length)
+    if (index >= 0 && index < props.SongDetails.length) {
       DataService.ServiceInst?.next({
         msgType: "Song",
         payLoad: props.SongDetails[index],
       });
-    else {
+      changeActiveElem(props.SongDetails[index]._id);
+    } else {
       // eslint-disable-next-line no-console
       console.log(index, props.SongDetails.length);
     }

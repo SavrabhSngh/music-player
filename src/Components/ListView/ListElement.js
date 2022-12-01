@@ -1,4 +1,4 @@
-import { getDuration } from "../../Services/Helper";
+import { getDuration, changeActiveElem } from "../../Services/Helper";
 import { DataService } from "../../Services/DataService";
 import "./ListView.css";
 
@@ -13,10 +13,11 @@ const ListElement = (props) => {
       msgType: "Song",
       payLoad: props,
     });
+    changeActiveElem(props._id);
   };
 
   return (
-    <div className="list-elements" onClick={handleClick}>
+    <div className={`list-elements element-${props._id}`} onClick={handleClick}>
       <div className="list-wrapper">
         <div className="list-image">
           <img src={props.photo} alt=""></img>
