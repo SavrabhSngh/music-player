@@ -94,3 +94,35 @@
 .active {
     background: rgba(255, 255, 255, 0.08);
 }
+
+@media (max-width: 1024px) {
+    .list-data .song {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    list-data .artist {
+        font-size: 11px;
+        line-height: 21px;
+    }
+    
+    .duration p {
+        font-size: 13px;
+        line-height: 21px;
+    }
+
+    .list-view .para {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .search {
+        height: 38px;
+        font-size: 14px;
+        line-height: 28px;
+    }
+
+    .magnify {
+        top: 30%;
+    }
+}

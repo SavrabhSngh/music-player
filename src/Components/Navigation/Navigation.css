@@ -34,3 +34,15 @@
 .active-playlist {
     opacity: 1!important;
 }
+
+@media (min-width: 676px) and (max-width: 1024px) {
+    .navigator p {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .profile {
+        height: 42px;
+        width: 42px;
+    }
+}
