@@ -106,4 +106,9 @@
         height: auto;
         max-height: 330px;
     }
+
+    .header .title {
+        font-size: 15px;
+        line-height: 20px;
+    }
 }
