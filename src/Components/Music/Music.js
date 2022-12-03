@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { DataService } from "../../Services/DataService";
 import GetSvg from "../Common/GetSvg";
 import { changeActiveElem } from "../../Services/Helper";
+import AnimationData from "./music.json";
+import Lottie from "react-lottie";
 import "./Music.css";
 
 const Music = (props) => {
@@ -10,6 +12,15 @@ const Music = (props) => {
   const [play, setPlay] = useState(false);
   const progress = useRef();
   const ref = useRef();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: AnimationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   useEffect(() => {
     DataService.initializeSubscriber(
@@ -131,7 +142,8 @@ const Music = (props) => {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="dflex no-music">
+          <Lottie options={defaultOptions} height={250} width={250} />
           <p>Tap on the list to play song</p>
         </div>
       )}

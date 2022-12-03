@@ -68,3 +68,12 @@
     opacity: 1;
     border-radius: 16px;
 }
+
+.no-music {
+    flex-direction: column;
+}
+
+.no-music p {
+    margin-top: 4%;
+    font-size: 1.3em;
+}
