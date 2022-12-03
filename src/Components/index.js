@@ -8,13 +8,17 @@ import { useEffect, useState } from "react";
 const MusicPlayer = () => {
   const [track, setTrack] = useState(1);
 
+  const handleTrack = (param) => {
+    setTrack(param);
+  };
+
   useEffect(() => {
     DataService.getPlayList();
   }, []);
 
   return (
     <div className="wraper">
-      <Navigation />
+      <Navigation handleTrack={handleTrack} />
       <ListView track={track} />
       <Music />
     </div>

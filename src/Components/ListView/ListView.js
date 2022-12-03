@@ -1,21 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { FOR_YOU } from "../../Services/Constants";
 import GetSvg from "../Common/GetSvg";
 import ListElement from "./ListElement";
 import { DataService } from "../../Services/DataService";
 import "./ListView.css";
 
 const ListView = (props) => {
+  const [label, setLabel] = useState("");
+
+  const changeLabel = () => {
+    const result = props.TrackData.filter((elem) => elem.id === props.track);
+    if (result.length) {
+      setLabel(result[0].title);
+    }
+  };
+
   useEffect(() => {
     if (props.track) {
       DataService.getSongsList(props.track);
+      changeLabel();
     }
   }, [props.track]);
 
+  useEffect(() => {
+    changeLabel();
+  }, [props.TrackData]);
+
   return (
     <div className="list-view">
-      <p className="para">{FOR_YOU}</p>
+      <p className="para">{label}</p>
       <div className="search-box">
         <input
           className="search"
@@ -46,6 +59,7 @@ const ListView = (props) => {
 const mapStateToProps = (state) => {
   return {
     SongsData: state.SongsData,
+    TrackData: state.TrackDetails,
   };
 };
 

@@ -21,6 +21,7 @@ const Navigation = (props) => {
     const element = document.getElementsByClassName(`playlist-${param}`)[0];
     if (element) {
       element.classList.add("active-playlist");
+      props.handleTrack(param);
       localStorage.setItem("playlist", param);
     }
   };
