@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import GetSvg from "../Common/GetSvg";
 import "./Navigation.css";
 
 const Navigation = (props) => {
+  const ref = useRef(null);
+
   useEffect(() => {
     if (props.TrackData.length) {
       changeActiveClass(props.TrackData[0].id);
@@ -11,10 +13,9 @@ const Navigation = (props) => {
   }, [props.TrackData]);
 
   const changeActiveClass = (param) => {
-    const id = localStorage.getItem("playlist");
-    if (id) {
+    if (ref.current) {
       const activeElement = document.getElementsByClassName(
-        `playlist-${id}`
+        `playlist-${ref.current}`
       )[0];
       activeElement && activeElement.classList.remove("active-playlist");
     }
@@ -22,7 +23,7 @@ const Navigation = (props) => {
     if (element) {
       element.classList.add("active-playlist");
       props.handleTrack(param);
-      localStorage.setItem("playlist", param);
+      ref.current = param;
     }
   };
 
