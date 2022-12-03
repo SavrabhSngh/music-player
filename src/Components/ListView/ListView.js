@@ -32,7 +32,7 @@ const ListView = (props) => {
       <div className="search-box">
         <input
           className="search"
-          type="search"
+          type="text"
           placeholder="Search Song, Artist"
         />
         <div className="magnify">{GetSvg("magnify")}</div>
