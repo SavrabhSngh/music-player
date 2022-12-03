@@ -92,6 +92,12 @@
         font-size: 19px;
         line-height: 22px;
     }
+
+    .song-image img {
+        width: 370px;
+        height: auto;
+        max-height: 370px;
+    }
 }
 
 @media (max-width: 768px) {
