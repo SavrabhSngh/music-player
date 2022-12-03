@@ -1,10 +1,18 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { FOR_YOU } from "../../Services/Constants";
 import GetSvg from "../Common/GetSvg";
 import ListElement from "./ListElement";
+import { DataService } from "../../Services/DataService";
 import "./ListView.css";
 
 const ListView = (props) => {
+  useEffect(() => {
+    if (props.track) {
+      DataService.getSongsList(props.track);
+    }
+  }, [props.track]);
+
   return (
     <div className="list-view">
       <p className="para">{FOR_YOU}</p>

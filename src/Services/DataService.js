@@ -1,7 +1,8 @@
 import { BehaviorSubject } from "rxjs";
-import { useQuery, gql } from "@apollo/client";
+import axios from "axios";
 import { saveTracks } from "../Store/Track/action";
 import { saveSongs } from "../Store/Songs/action";
+import { API_BASE_URL } from "../envconfig";
 export class DataService {
   static serviceBehaviour;
 
@@ -30,43 +31,50 @@ export class DataService {
   }
 
   static getPlayList = async () => {
-    const PlayList = gql`
-      {
-        getPlaylists {
-          id
-          title
+    axios({
+      method: "post",
+      url: API_BASE_URL,
+      data: {
+        query: `
+        {
+          getPlaylists {
+            id
+            title
+          }
         }
-      }
-    `;
-    // eslint-disable-next-line no-unused-vars
-    const { data, loading, error } = await useQuery(PlayList);
-    if (data?.getPlaylists.length) {
+        `,
+      },
+    }).then((resp) => {
       DataService.serviceBehaviour &&
         DataService.serviceBehaviour.AppStore.dispatch(
-          saveTracks(data.getPlaylists)
+          saveTracks(resp.data.data.getPlaylists)
         );
-    }
+    });
   };
 
   static getSongsList = async (playlistId) => {
-    const SongsList = gql` {
-      getSongs(playlistId: ${playlistId}) {
-        _id
-        title
-        photo
-        url
-        duration
-        artist
-      }
-    }
-    `;
-    // eslint-disable-next-line no-unused-vars
-    const { data, loading, error } = await useQuery(SongsList);
-    if (data?.getSongs.length) {
+    axios({
+      method: "post",
+      url: API_BASE_URL,
+      data: {
+        query: `
+        {
+          getSongs(playlistId: ${playlistId}) {
+            _id
+            title
+            photo
+            url
+            duration
+            artist
+          }
+        }
+        `,
+      },
+    }).then((resp) => {
       DataService.serviceBehaviour &&
         DataService.serviceBehaviour.AppStore.dispatch(
-          saveSongs(data.getSongs)
+          saveSongs(resp.data.data.getSongs)
         );
-    }
+    });
   };
 }
