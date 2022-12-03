@@ -9,6 +9,8 @@ import "./Music.css";
 
 const Music = (props) => {
   const [songData, setSongData] = useState(props.SongDetails[0]);
+  const [prev, setPrev] = useState(false);
+  const [next, setNext] = useState(false);
   const [play, setPlay] = useState(false);
   const progress = useRef();
   const ref = useRef();
@@ -97,14 +99,19 @@ const Music = (props) => {
       index -= 1;
     }
     if (index >= 0 && index < props.SongDetails.length) {
+      setPrev(false);
+      setNext(false);
+      if (index === 0) {
+        setPrev(true);
+      }
+      if (index === props.SongDetails.length - 1) {
+        setNext(true);
+      }
       DataService.ServiceInst?.next({
         msgType: "Song",
         payLoad: props.SongDetails[index],
       });
       changeActiveElem(props.SongDetails[index]._id);
-    } else {
-      // eslint-disable-next-line no-console
-      console.log(index, props.SongDetails.length);
     }
   };
 
@@ -129,13 +136,13 @@ const Music = (props) => {
             <div className="svg">{GetSvg("eclipse")}</div>
             <div className="dflex play">
               <div className="svg" onClick={() => handlePrevNext(0)}>
-                {GetSvg("previous")}
+                {prev ? null : GetSvg("previous")}
               </div>
               <div className="svg" onClick={handlePlayPause}>
                 {play ? GetSvg("play") : GetSvg("pause")}
               </div>
               <div className="svg" onClick={() => handlePrevNext(1)}>
-                {GetSvg("next")}
+                {next ? null : GetSvg("next")}
               </div>
             </div>
             <div className="svg">{GetSvg("mic")}</div>
