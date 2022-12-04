@@ -40,6 +40,10 @@ const Music = (props) => {
             if (data.payLoad && data.payLoad.title) {
               setSongData(data.payLoad);
               setPlay(true);
+              const element = document.getElementsByTagName("body")[0];
+              if (element && element.classList) {
+                element.classList.toggle("brownish");
+              }
               ref.current = new Audio(data.payLoad.url);
               ref.current.play();
             }

@@ -12,12 +12,19 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif!important;
-    background: linear-gradient(108.18deg, rgba(51, 66, 94, 0.6) 2.46%, rgba(0, 0, 0, 0.6) 99.84%), #000000;
     color: #FFF;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
     overflow: hidden;
+}
+
+.blackish {
+    background: linear-gradient(108.18deg, rgba(51, 66, 94, 0.6) 2.46%, rgba(0, 0, 0, 0.6) 99.84%), #000000;
+}
+
+.brownish {
+    background: linear-gradient(108.18deg, #201606 2.46%, #000000 99.84%);
 }
 
 ::-webkit-scrollbar {
